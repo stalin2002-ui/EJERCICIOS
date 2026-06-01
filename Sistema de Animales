@@ -1,0 +1,27 @@
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    def __init__(self, nombre):
+        self.__nombre = nombre
+
+    @abstractmethod
+    def hacer_sonido(self):
+        pass
+
+class Perro(Animal):
+    def hacer_sonido(self):
+        print("Guau Guau")
+
+class Gato(Animal):
+    def hacer_sonido(self):
+        print("Miau")
+
+class Vaca(Animal):
+    def hacer_sonido(self):
+        print("Muuu")
+
+
+animales = [Perro("Firulais"), Gato("Michi"), Vaca("Lola")]
+
+for animal in animales:
+    animal.hacer_sonido()
