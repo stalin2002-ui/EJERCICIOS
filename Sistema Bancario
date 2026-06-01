@@ -1,0 +1,38 @@
+from abc import ABC, abstractmethod
+
+class CuentaBancaria(ABC):
+    def __init__(self, titular, saldo):
+        self.__titular = titular
+        self.__saldo = saldo
+
+    def depositar(self, cantidad):
+        self.__saldo += cantidad
+
+    def retirar(self, cantidad):
+        if cantidad <= self.__saldo:
+            self.__saldo -= cantidad
+        else:
+            print("Saldo insuficiente")
+
+    def mostrar_saldo(self):
+        print("Saldo:", self.__saldo)
+
+    @abstractmethod
+    def calcular_interes(self):
+        pass
+
+class CuentaAhorros(CuentaBancaria):
+    def calcular_interes(self):
+        print("Interés:", 50)
+
+class CuentaCorriente(CuentaBancaria):
+    def calcular_interes(self):
+        print("Interés:", 20)
+
+
+cuenta = CuentaAhorros("Stalin", 1000)
+
+cuenta.depositar(500)
+cuenta.retirar(200)
+cuenta.mostrar_saldo()
+cuenta.calcular_interes()
