@@ -1,0 +1,31 @@
+from abc import ABC, abstractmethod
+
+class Pago(ABC):
+    def __init__(self, monto):
+        self.__monto = monto
+
+    @abstractmethod
+    def procesar_pago(self):
+        pass
+
+class PagoTarjeta(Pago):
+    def procesar_pago(self):
+        print("Pago realizado con tarjeta.")
+
+class PagoPayPal(Pago):
+    def procesar_pago(self):
+        print("Pago realizado con PayPal.")
+
+class PagoTransferencia(Pago):
+    def procesar_pago(self):
+        print("Pago realizado mediante transferencia.")
+
+
+pagos = [
+    PagoTarjeta(100),
+    PagoPayPal(200),
+    PagoTransferencia(300)
+]
+
+for pago in pagos:
+    pago.procesar_pago()
