@@ -1,0 +1,27 @@
+from abc import ABC, abstractmethod
+
+class Empleado(ABC):
+    def __init__(self, nombre, salario):
+        self.__nombre = nombre
+        self.__salario = salario
+
+    @abstractmethod
+    def calcular_bono(self):
+        pass
+
+class Gerente(Empleado):
+    def calcular_bono(self):
+        return 500
+
+class Programador(Empleado):
+    def calcular_bono(self):
+        return 300
+
+
+empleados = [
+    Gerente("Juan", 2000),
+    Programador("Ana", 1500)
+]
+
+for empleado in empleados:
+    print("Bono:", empleado.calcular_bono())
